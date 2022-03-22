@@ -2,15 +2,17 @@ package com.javastart;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/books")
 public class BookController {
 
-    @GetMapping("/api/books")
-    @ResponseBody
+    @GetMapping
     List<Book> getAllBooks() {
         return List.of(
                 new Book("Harry Potter", "J.K. Rowling", 1997, 223),
@@ -19,8 +21,7 @@ public class BookController {
         );
     }
 
-    @GetMapping("/api/books/1")
-    @ResponseBody
+    @GetMapping("/1")
     Book getSingleBook(){
         return new Book("Harry Potter", "J.K. Rowling", 1997, 223);
     }
